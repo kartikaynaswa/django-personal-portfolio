@@ -1,0 +1,41 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+
+<h1 class="font-weight-bold ">Kartikay's portfolio</h1>
+<!-- for adding static -->
+{%load static%}
+<div class="row justify-content-center my-3">
+  <div class="col-3">
+    <img src="{% static 'portfolio/Statimg.jpg' %}" class="img-fluid">
+  </div>
+</div>
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-9 text-center">
+      <h5 id="hometext" class="font-weight-bold">Kartikay Naswa 😊 is a B.Tech(Computer Science & Engineering) Student at <a href = "https://www.msit.in/">Maharaja Surajmal Institute of Technology</a> </h5>
+    </div>
+  </div>
+
+  <h2 class="mt-4">Portfolio</h2>
+  <hr>
+  <div class="row">
+  {% for project in projects %}
+    <div class="col-lg-4 col-md-2" >
+    
+      {% if project.url %}
+      <a href="{{ project.url }}">
+        <img src = "{{project.image.url}}" class="img-fluid mb-2" >
+      </a>
+      {% else %}
+      <img src = "{{project.image.url}}" class="img-fluid mb-2" >
+      {% endif %}
+
+      <h3>{{ project.title }}</h3>
+      <p>{{project.Description}}</p>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<h1>All blogs</h1>
+<!-- blog: is for app name  -->
+
+<h1>I have written {{ blogs.count }} blog{{ blogs.count|pluralize}} </h1>
+{% for blog in blogs %}
+<a href = "{% url 'blog:detail' blog.id %}"><h1>{{blog.title}}</h1></a>
+
+<h5>{{blog.date|date:'D, M d Y'}}</h5>
+<p1>{{blog.description|striptags|truncatechars:10}}</p1>
+
+<!-- 'striptags' removes all html tags, to use html tags 
+    inside string use 'safe' instead of 'striptags' -->
+
+{% endfor %}
+
+{% endblock %}
